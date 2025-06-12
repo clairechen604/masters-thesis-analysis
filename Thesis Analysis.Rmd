@@ -1,0 +1,330 @@
+---
+title: "Pointing-Caregiver-Response-Project"
+author: "Claire Chen"
+output: html_document
+---
+
+# set up
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggpubr)
+library(knitr)
+library(emmeans)
+library(lme4)
+library(lmerTest)
+library(mclogit)
+library(patchwork)
+```
+
+# import data & create new df's
+
+```{r data import and wrangling}
+df <- read_csv("raw_data.csv")
+nonpointers <- read_csv("nonpointers.csv")
+
+# create a pointers df (proportions calculated for longitudinal analyses)
+pointers <- df |>
+  select(
+    subject, 
+    CGR_sensitivity, 
+    CGR_modality, 
+    point_directedness, 
+    point_modality, 
+    pointing_type, 
+    comprehension, 
+    production
+    ) |>
+  mutate(
+    CGR_modality = as.character(CGR_modality),
+    CGR_modality = replace_na(CGR_modality, "NR"),
+    CGR_modality = as.factor(CGR_modality)
+    ) |>
+  group_by(subject) |>
+  summarize(
+    num_sen = sum(CGR_sensitivity == "Sen"),
+    CGR_sensitivity = mean(CGR_sensitivity == "Sen"),
+    undirected_point = mean(point_directedness == "undirected"),
+    object_point = mean(point_directedness == "object"),
+    social_point = mean(point_directedness == "social"),
+    unimodal_point = mean(point_modality == "point_alone"),
+    multimodal_CGR = mean(CGR_modality == "Both"),
+    vocal_CGR = mean(CGR_modality == "Vocal"),
+    gestural_CGR = mean(CGR_modality == "Action"),
+    count = n(),
+    comprehension = first(na.omit(comprehension)),
+    production = first(na.omit(production))
+    ) |>
+  mutate(
+    directed_point = 1 - undirected_point,
+    multimodal_point = 1 - unimodal_point,
+    avg_sen = num_sen / 10
+    )
+
+# combine pointers and nonpointers df to one summary stats df
+point_summary <- bind_rows(pointers, nonpointers) |>
+  mutate(
+    point = ifelse(count > 0, TRUE, FALSE)
+    )
+```
+
+# free play inferential statistics (10-mo)
+
+Caregiver response modality predicted by infant point modality. Note the mblogit model is a quasi-likelihood estimation, so the global test output is also an estimation. 
+
+```{r cgr modality ~ point modality}
+# recode variable levels to more intuitive labels
+df <- df |>
+  mutate(
+    CGR_modality = ifelse(
+      is.na(CGR_modality),
+      "No Response",
+      as.character(CGR_modality)
+      )
+    ) |>
+  mutate(
+    CGR_modality = case_when(
+      CGR_modality == "Both" ~ "Gestural + Vocal",
+      CGR_modality == "Action" ~ "Gestural",
+      TRUE ~ CGR_modality
+      ),
+    point_modality = case_when(
+      point_modality == "multimodal" ~ "Point + Vocalization",
+      point_modality == "point_alone" ~ "Point",
+      TRUE ~ point_modality
+      )
+    ) |>
+  mutate(
+    CGR_modality = as.factor(CGR_modality),
+    point_modality = as.factor(point_modality)
+    )
+
+# mixed-effects multinomial model 
+model_mblogit <- mblogit(
+  CGR_modality ~ point_modality, 
+  random = ~ 1 | subject, 
+  catCov = "diagonal", 
+  data = df
+  )
+
+# check model summary
+summary(model_mblogit)
+
+# null model for global test (catCov = "diagonal" used for better model fit)
+model_mblogit_null <- mblogit(
+  CGR_modality ~ 1, 
+  random = ~ 1 | subject, 
+  catCov = "diagonal", 
+  data = df
+  )
+
+# check null model summary
+summary(model_mblogit_null)
+
+# global test (note the quasi-likelihood estimation)
+anova(model_mblogit_null, model_mblogit, test = "Chisq")
+
+# post hoc pairwise comparisons
+summary(
+  emmeans(
+    model_mblogit, 
+    ~ CGR_modality | point_modality,
+    subset = df$point_modality,
+    contr = "pairwise", 
+    mode = "prob"), 
+  infer = TRUE
+  )
+
+summary(
+  emmeans(
+    model_mblogit, 
+    ~ point_modality | CGR_modality, 
+    subset = df$CGR_modality, 
+    contr = "pairwise", 
+    mode = "prob"),
+  infer = TRUE
+  )
+
+# visualizations
+```
+
+Caregiver response modality predicted by infant point directedness. Note the mblogit model is a quasi-likelihood estimation, so the global test output is also an estimation. Undirected points were excluded due to infrequent observations for better model convergence.
+
+```{r cgr modality ~ point directedness}
+# create a df that excludes undirected points
+df_simplified <- df |>
+  filter(
+    point_directedness != "undirected"
+    )
+
+# mixed-effects multinomial model 
+model_mblogit2 <- mblogit(
+  CGR_modality ~ point_directedness, 
+  random = ~ 1 | subject, 
+  catCov = "diagonal", 
+  data = df_simplified
+  )
+
+# check model summary
+summary(model_mblogit2)
+
+# null model for global test
+model_mblogit_null2 <- mblogit(
+  CGR_modality ~ 1, 
+  random = ~ 1 | subject, 
+  catCov = "diagonal", 
+  data = df_simplified
+  )
+
+# check null model summary
+summary(model_mblogit_null2)
+
+# global test (note the quasi-likelihood estimation)
+anova(model_mblogit_null2, model_mblogit2, test = "Chisq")
+
+# post hoc pairwise comparisons
+summary(
+  emmeans(
+    model_mblogit2, 
+    ~ CGR_modality | point_directedness, 
+    subset = df$point_directedness,
+    contr = "pairwise",
+    mode = "prob"), 
+  infer = TRUE
+  )
+
+summary(
+  emmeans(
+    model_mblogit2, 
+    ~ point_directedness | CGR_modality, 
+    subset = df$CGR_modality, 
+    contr = "pairwise", 
+    mode = "prob"),
+  infer = TRUE
+  )
+
+# visualizations
+```
+
+Caregiver response sensitivity predicted by infant point modality.
+
+```{r cgr sensitivity ~ point modality}
+# set "Sen" responses as the baseline level
+df$CGR_sensitivity <- factor(
+  df$CGR_sensitivity, 
+  levels = c("NSen", "Sen")
+  )
+
+# recode variables to factors
+df <- df |>
+  mutate(
+    CGR_sensitivity = as.factor(CGR_sensitivity),
+    point_directedness = as.factor(point_directedness)
+    )
+
+# mixed-effects binomial model
+model_glmer <- glmer(
+  CGR_sensitivity ~ point_modality + (1 | subject), 
+  data = df,
+  family = binomial()
+  ) 
+
+# check model summary
+summary(model_glmer)
+
+# null model for global test
+model_null <- glmer(
+  CGR_sensitivity ~ 1 + (1 | subject),
+  data = df,
+  family = binomial()
+  )
+
+# check null model summary
+summary(model_glmer_null)
+
+# global test
+anova(model_glmer_null, model_glmer, test = "Chisq")
+
+# global test alternative
+joint_tests(model_glmer)
+
+# post hoc tests (logit scale)
+summary(
+  emmeans(
+    model_glmer, 
+    ~ point_modality, 
+    contr = "pairwise", 
+    weights = "proportional", 
+    adjust = "tukey"), 
+  infer = TRUE
+  )
+
+# post hoc tests (probability scale)
+summary(
+  emmeans(
+    model_glmer, 
+    ~ point_modality, 
+    type = "response", 
+    contr = "pairwise",
+    weights = "proportional", 
+    adjust = "tukey"),
+  infer = TRUE
+  )
+
+# visualizations
+```
+
+Caregiver response sensitivity predicted by infant point directedness.
+
+```{r cgr sensitivity ~ point directedness}
+# mixed-effects binomial model
+model_glmer2 <- glmer(
+  CGR_sensitivity ~ point_directedness + (1 | subject), 
+  data = df,
+  family = binomial()
+  ) 
+
+# check model summary
+summary(model_glmer2)
+
+# null model for global test
+model_glmer_null2 <- glmer(
+  CGR_sensitivity ~ 1 + (1 | subject), 
+  data = df, 
+  family = binomial()
+  )
+
+# check null model summary
+summary(model_glmer_null2)
+
+# global test
+anova(model_glmer2, model_glmer_null2, test = "Chisq")
+
+# global test alternative
+joint_tests(model_glmer2)
+
+# post hoc tests (logit scale)
+summary(
+  emmeans(
+    model_glmer2, 
+    ~ point_directedness, 
+    contr = "pairwise", 
+    weights = "proportional", 
+    adjust = "tukey"), 
+  infer = TRUE
+  )
+
+# post hoc tests (probability scale)
+summary(
+  emmeans(
+    model_glmer2, 
+    ~ point_directedness, 
+    type = "response", 
+    contr = "pairwise",
+    weights = "proportional", 
+    adjust = "tukey"),
+  infer = TRUE
+  )
+```
+
+# longitudinal inferential statistics (18-mo MCDI returns)

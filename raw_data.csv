@@ -1,0 +1,70 @@
+Begin Time - ss.msec,End Time - ss.msec,Duration - ss.msec,CGR_type,CGR_modality,pointing_type,CGR,CGR_sensitivity,subject,point_directedness,point_modality,comprehension,production
+390.75,392.11,1.36,NA,Gestural,ODP,[grabs the toy],Sen,subj_105,object,Point,260,46
+662.82,665.96,3.14,NA,Gestural,ODPV,[moves toys closer to baby],Sen,subj_105,object,Point + Vocalization,260,46
+352.43,353.41,0.98,Obj-Descrip,Gestural + Vocal,ODP,[picks up a toy] Starfish?,Sen,subj_11,object,Point,342,297
+446.86,448.84,1.98,Obj-Descrip,Gestural + Vocal,ODP,[hands over a toy] what are you reaching for now? you want a fish?,Sen,subj_118,object,Point,264,160
+694.42,696.85,2.43,Obj-Descrip,Gestural + Vocal,ODP,[picks up a toy] You want this?,Sen,subj_28,object,Point,258,192
+570.38,573.68,3.3,NA,Gestural,ODP,[handing a toy],Sen,subj_28,object,Point,258,192
+581.37,585.66,4.29,NA,Gestural,ODP,[picks up a toy and shakes it],Sen,subj_28,object,Point,258,192
+531.33,533,1.67,NA,No Response,SDPV,NA,NSen,subj_28,social,Point + Vocalization,258,192
+463.81,465.19,1.38,Obj-Descrip,Vocal,ODPV,"Yep, those are outlets",Sen,subj_4,object,Point + Vocalization,311,112
+465.41,468.11,2.7,Obj-Descrip,Vocal,ODPV,You can't play with them here just like you can't play with them at home,Sen,subj_4,object,Point + Vocalization,311,112
+522.47,524.02,1.55,Obj-Descrip,Vocal,ODPV,We are not gonna play with the outlet,Sen,subj_4,object,Point + Vocalization,311,112
+526.25,529.05,2.8,Obj-Descrip,Vocal,ODPV,I can see how much you want to but it's not a toy,Sen,subj_4,object,Point + Vocalization,311,112
+609.64,610.45,0.81,Obj-Descrip,Vocal,ODPV,That's the outlet,Sen,subj_4,object,Point + Vocalization,311,112
+623.59,625.44,1.85,Conv-Holder,Vocal,UDP,Ooo-oo,NSen,subj_4,undirected,Point,311,112
+626.13,627.838,1.708,Com-Nar,Vocal,UDP,What are you gonna do?,NSen,subj_4,undirected,Point,311,112
+629.74,631.41,1.67,Com-Nar,Vocal,UDPV,Are you gonna be able to walk all over?,NSen,subj_4,undirected,Point + Vocalization,311,112
+648.01,648.41,0.4,Conv-Holder,Vocal,ODPV,No,NSen,subj_4,object,Point + Vocalization,311,112
+648.71,650.82,2.11,Obj-Descrip,Gestural + Vocal,ODP,[Holds down baby's hand] We're not gonna play with the outlet,Sen,subj_4,object,Point,311,112
+688.57,690.01,1.44,Obj-Descrip,Vocal,ODPV,We're not gonna play with the outlet,Sen,subj_4,object,Point + Vocalization,311,112
+696.23,697.41,1.18,Obj-Descrip,Vocal,ODPV,We're not gonna play with the outlet,Sen,subj_4,object,Point + Vocalization,311,112
+697.62,700.25,2.63,Redir,Vocal,ODPV,Do you wanna come back over here and look at the ball some more?,NSen,subj_4,object,Point + Vocalization,311,112
+874.02,877.52,3.5,Redir,Gestural + Vocal,UDPV,[Walks the baby over] Do you see a ball? Tryna go get the ball?,Sen,subj_4,undirected,Point + Vocalization,311,112
+357.6,359.44,1.84,Com-Nar,Vocal,SDPV,Yeah I know you like her pink paper the most.,Sen,subj_43,social,Point + Vocalization,NA,NA
+374.81,377.75,2.94,Non-Dyadic,Gestural + Vocal,SDP,[walks away and gasps] Look what I see!,NSen,subj_43,social,Point,NA,NA
+381.28,386.41,5.13,Obj-Descrip,Gestural + Vocal,ODPV,[walks toward the baby with a toy] Do you wanna see what this is?,Sen,subj_43,object,Point + Vocalization,NA,NA
+784.35,785.54,1.19,Obj-Descrip,Vocal,ODP,You wanna bring it here?,Sen,subj_43,object,Point,NA,NA
+859.71,861.9,2.19,Obj-Descrip,Gestural + Vocal,ODP,[walks over and hands baby the toy] You want the ball? Here.,Sen,subj_43,object,Point,NA,NA
+745.08,746.36,1.28,NA,Gestural,ODP,[hands the toy to baby],Sen,subj_43,object,Point,NA,NA
+836.62,838.86,2.24,NA,Gestural,SDPV,[hands baby a toy],Sen,subj_43,social,Point + Vocalization,NA,NA
+452.23,454.04,1.81,Obj-Descrip,Gestural + Vocal,ODP,"[rolls the toy forward] There you go, it's a bal!",Sen,subj_47,object,Point,221,87
+796.53,799,2.47,Obj-Descrip,Vocal,ODP,Does it? Does a kangaroo have a mother too?,Sen,subj_53,object,Point,NA,NA
+831.46,832.91,1.45,NA,No Response,ODP,NA,NSen,subj_53,object,Point,NA,NA
+748.25,749.68,1.43,Obj-Descrip,Vocal,ODP,Oscar,Sen,subj_59,object,Point,NA,NA
+759.96,761.67,1.71,Com-Nar,Vocal,ODP,"Right, good job!",NSen,subj_59,object,Point,NA,NA
+773.31,774.79,1.48,Obj-Descrip,Gestural + Vocal,ODP,[Points to the object] Oscar,Sen,subj_59,object,Point,NA,NA
+779.35,780.69,1.34,Obj-Descrip,Vocal,ODPV,Say Zoe!,Sen,subj_59,object,Point + Vocalization,NA,NA
+888.77,890.55,1.78,Com-Nar,Vocal,ODPV,Good job!,NSen,subj_59,object,Point + Vocalization,NA,NA
+468.38,468.95,0.57,NA,No Response,ODP,NA,NSen,subj_6,object,Point,430,430
+677.32,678.01,0.69,Com-Nar,Vocal,UDP,What's that!,NSen,subj_6,undirected,Point,430,430
+678.96,679.78,0.82,Obj-Descrip,Vocal,ODPV,That's a kangaroo,Sen,subj_6,object,Point + Vocalization,430,430
+824.11,825.11,1,Demo,Gestural + Vocal,ODP,[Playing with target object] Peek-a-boo,Sen,subj_6,object,Point,430,430
+559.01,560.99,1.98,NA,No Response,SDPV,NA,NSen,subj_64,social,Point + Vocalization,NA,NA
+484.42,485.13,0.71,Obj-Descrip,Vocal,ODPV,Ernie!,Sen,subj_74,object,Point + Vocalization,393,210
+837.66,839.06,1.4,Obj-Descrip,Gestural + Vocal,ODP,[grabs a toy] Which one you want? Here.,Sen,subj_75,object,Point,294,202
+565.4,567.38,1.98,NA,No Response,ODP,NA,NSen,subj_75,object,Point,294,202
+393.45,394.88,1.43,Obj-Descrip,Vocal,ODP,Who's that? Grover.,Sen,subj_76,object,Point,387,175
+398.82,400.27,1.45,Obj-Descrip,Gestural + Vocal,ODP,[points to characters] Grover. Elmo.,Sen,subj_76,object,Point,387,175
+402.41,403.74,1.33,Obj-Descrip,Gestural + Vocal,ODP,[points to character] This is Big Bird.,Sen,subj_76,object,Point,387,175
+408.27,409.23,0.96,Obj-Descrip,Gestural + Vocal,ODPV,[points to character] Big Bird.,Sen,subj_76,object,Point + Vocalization,387,175
+416.58,418.38,1.8,Obj-Descrip,Gestural + Vocal,ODPV,[points to character] Grover. Do you like Grover?,Sen,subj_76,object,Point + Vocalization,387,175
+424.24,425.03,0.79,Obj-Descrip,Gestural + Vocal,ODP,[points to character] Elmo.,Sen,subj_76,object,Point,387,175
+398.97,400.12,1.15,Obj-Descrip,Gestural + Vocal,ODP,[points to characters] Grover. Elmo.,Sen,subj_76,object,Point,387,175
+354.71,358.42,3.71,Demo,Gestural + Vocal,ODP,[plays w the toy] Peak-a-boo!,Sen,subj_87,object,Point,277,45
+358.9,360.92,2.02,Demo,Gestural + Vocal,ODP,[plays w the toy] I see you.,Sen,subj_87,object,Point,277,45
+543.4,547.7,4.3,Conv-Holder,Gestural + Vocal,SDP,[plays w the baby] [baby farts] Excuse you,Sen,subj_87,social,Point,277,45
+548.25,552.03,3.78,Conv-Holder,Gestural + Vocal,SDP,[tickles the baby] Gonna get you get you get you...,Sen,subj_87,social,Point,277,45
+552.45,554.85,2.4,Conv-Holder,Gestural + Vocal,SDP,[tickles the baby] I'm gonna get you get you get you...,Sen,subj_87,social,Point,277,45
+571.29,573.43,2.14,Conv-Holder,Gestural + Vocal,SDP,[tickles the baby] Gonna get you get you get you...,Sen,subj_87,social,Point,277,45
+580.91,582.41,1.5,Com-Nar,Gestural + Vocal,SDP,[brings up the baby] I gotcha,Sen,subj_87,social,Point,277,45
+596.42,598.24,1.82,Obj-Descrip,Gestural + Vocal,SDP,[throws the toy] Where did it go?,Sen,subj_87,social,Point,277,45
+884.01,886.79,2.78,Com-Nar,Gestural + Vocal,ODP,[plays w the baby] Where's Natalie?,Sen,subj_87,object,Point,277,45
+536.95,538.15,1.2,NA,Gestural,SDP,[plays w the baby],Sen,subj_87,social,Point,277,45
+538.34,542.7,4.36,NA,Gestural,SDP,[plays w the baby],Sen,subj_87,social,Point,277,45
+664.91,666.42,1.51,NA,Gestural,SDP,[lifts the baby up and down],Sen,subj_87,social,Point,277,45
+674.26,675.43,1.17,Obj-Descrip,Gestural + Vocal,ODP,[points] Elmo.,Sen,subj_91,object,Point,162,0
+766.28,768.28,2,NA,No Response,ODP,NA,NSen,subj_91,object,Point,162,0
+325.49,327.11,1.62,Com-Nar,Gestural + Vocal,SDP,[plays w baby's feet] Flynn's feet,Sen,subj_96,social,Point,325,127
+450.58,452.11,1.53,Obj-Descrip,Gestural + Vocal,ODP,[picks up a toy] you want the ball?,Sen,subj_99,object,Point,177,28
+546.45,548.43,1.98,NA,No Response,UDPV,NA,NSen,subj_99,undirected,Point + Vocalization,177,28
