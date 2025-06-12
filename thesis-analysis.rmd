@@ -144,8 +144,6 @@ summary(
     mode = "prob"),
   infer = TRUE
   )
-
-# visualizations
 ```
 
 Caregiver response modality predicted by infant point directedness. Note the mblogit model is a quasi-likelihood estimation, so the global test output is also an estimation. Undirected points were excluded due to infrequent observations for better model convergence.
@@ -202,8 +200,6 @@ summary(
     mode = "prob"),
   infer = TRUE
   )
-
-# visualizations
 ```
 
 Caregiver response sensitivity predicted by infant point modality.
@@ -270,8 +266,6 @@ summary(
     adjust = "tukey"),
   infer = TRUE
   )
-
-# visualizations
 ```
 
 Caregiver response sensitivity predicted by infant point directedness.
@@ -326,5 +320,3 @@ summary(
   infer = TRUE
   )
 ```
-
-# longitudinal inferential statistics (18-mo MCDI returns)
